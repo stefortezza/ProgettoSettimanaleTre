@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title">Lista Utenti</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let user of users">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="mb-0">Nome: {{ user.name }}</h6>
+            <small>Email: {{ user.email }}</small>
+          </div>
+          <button class="btn btn-sm btn-primary" [routerLink]="['/dettagli']">
+            Dettagli
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
