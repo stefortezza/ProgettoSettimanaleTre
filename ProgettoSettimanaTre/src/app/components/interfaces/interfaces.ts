@@ -6,8 +6,10 @@ export interface Interfaces {
 }
 
 export interface User{
+  accessToken: string;
   name: string;
   email: string;
+  password: string;
 }
 
 export interface Favorite {

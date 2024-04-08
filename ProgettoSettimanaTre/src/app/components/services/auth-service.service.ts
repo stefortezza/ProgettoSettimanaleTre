@@ -21,4 +21,8 @@ export class AuthServiceService {
       .get<any>(this.apiURL)
       .pipe(map((response: any) => response.users));
   }
+
+  register(name: string, email: string, password: string): Observable<User> {
+    return this.http.post<User>(`${this.apiURL}/registrazione`, { name, email, password });
+  }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Interfaces } from '../interfaces/interfaces';
 import { AuthServiceService } from '../services/auth-service.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-film',

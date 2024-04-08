@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiURL: 'http://localhost:4201/db.json',
+  apiURL: 'http://localhost:4201/assets/db.json/',
 };
