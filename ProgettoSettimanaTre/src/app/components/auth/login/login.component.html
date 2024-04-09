@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="card">
+    <h1>Sign In</h1>
+
+    <div class="label-float">
+      <input type="email" id="email" placeholder="" formControlName="email" />
+      <label for="email">Email</label>
+    </div>
+
+    <div class="label-float">
+      <input
+        type="password"
+        id="password"
+        placeholder=""
+        formControlName="password"
+      />
+      <label for="password">Password</label>
+    </div>
+
+    <div class="justify-center">
+      <button type="submit" class="btn btn-primary btn-lg text-center">
+        <span>Login</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="3"
+          height="6"
+          fill="currentColor"
+          class="bi bi-arrow-right"
+          viewBox="0 0 16 16"
+        ></svg>
+      </button>
+    </div>
+
+    <div>
+      <hr />
+    </div>
+
+    <p>
+      Non hai un account?
+      <a [routerLink]="['/registrazione']" routerLinkActive="router-link-active"
+        >Registrati</a
+      >
+    </p>
+  </div>
+</div>

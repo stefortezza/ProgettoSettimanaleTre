@@ -1,32 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { Observable } from 'rxjs';
-import { User } from '../../interfaces/interfaces';
-import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrazione',
   templateUrl: './registrazione.component.html',
   styleUrls: ['./registrazione.component.scss'],
 })
-export class RegistrazioneComponent {
-  name: string = '';
-  email: string = '';
-  password: string = '';
+export class RegistrazioneComponent implements OnInit {
+  registerForm: FormGroup;
+  errorMessage: string;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.errorMessage = '';
+    this.registerForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+  }
 
-  onSubmit(form: NgForm) {
-    console.log(form);
-    
-    this.authService.register(this.name, this.email, this.password).subscribe(
-      (user: User) => {
-        console.log('Registrazione avvenuta con successo:', user);
-        const accessToken = user.accessToken;
-      },
-      error => {
-        console.error('Errore durante la registrazione:', error);
-      }
-    );
+  ngOnInit(): void {}
+
+  onSubmit() {
+    if (this.registerForm.valid) {
+      const formData = this.registerForm.value;
+      this.authService.register(formData).subscribe(
+        () => {
+          // Naviga verso la pagina di login dopo la registrazione
+          this.router.navigate(['/login']);
+        },
+        (error) => {
+          this.errorMessage = error;
+        }
+      );
+    }
   }
 }

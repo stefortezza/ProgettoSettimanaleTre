@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SigninComponent } from './components/auth/signin/signin.component';
 import { RegistrazioneComponent } from './components/auth/registrazione/registrazione.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { HomeComponent } from './components/home/home.component';
@@ -13,7 +14,7 @@ import { Route, RouterModule } from '@angular/router';
 import { FilmComponent } from './components/film/film.component';
 import { DettagliComponent } from './components/dettagli/dettagli.component';
 import { PreferitiComponent } from './components/preferiti/preferiti.component';
-
+import { LoginComponent } from './components/auth/login/login.component';
 
 const routes: Route[] = [
   {
@@ -22,7 +23,7 @@ const routes: Route[] = [
   },
   {
     path: 'login',
-    component: SigninComponent,
+    component: LoginComponent,
   },
   {
     path: 'registrazione',
@@ -49,14 +50,14 @@ const routes: Route[] = [
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent,
     RegistrazioneComponent,
     ProfilePageComponent,
     HomeComponent,
     NavbarComponent,
     FilmComponent,
     DettagliComponent,
-    PreferitiComponent
+    PreferitiComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +65,7 @@ const routes: Route[] = [
     HttpClientModule,
     RouterModule,
     RouterModule.forRoot(routes),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
